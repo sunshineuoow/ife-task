@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review11</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-family: "Microsoft Yahei";
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul li {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .header,
+        .nav,
+        .logo,
+        .tag,
+        .column,
+        .module div,
+        .article li {
+            display: flex;
+        }
+
+        /*把article部分的ul变为flex不行,需要将li变为flex,因为是每个li需要图片和文字弹性分布*/
+
+        .header {
+            height: 50px;
+            padding: 1%;
+            background-color: #91d4da;
+        }
+
+        .header strong,
+        .header a {
+            color: #fff;
+        }
+
+        .header strong {
+            margin: auto;
+            font-size: 3vw;
+        }
+
+        .header a {
+            position: absolute;
+            top: 5%;
+            left: 3.5%;
+            padding-left: 6%;
+            background: url(images/task11-header01.png) 63% 0 no-repeat;
+            background-size: 16%;
+            font-size: 1.2vw;
+        }
+
+        /*导航栏这种重复项多的使用ul比使用div好*/
+        .nav {
+            text-align: center;
+        }
+
+        .nav li {
+            width: 20%;
+            font-size: 2.3vw;
+        }
+
+        .nav li:nth-child(2) {
+            border-bottom: 5px solid #91d4da;
+        }
+
+        .nav li:hover {
+            border-bottom: 5px solid #91d4da;
+        }
+
+        /*如果使用div包裹图片,设置图片宽度100%就会使得图片充满整个盒子*/
+        /*设置li的margin为auto才能使的其内部元素居中显示*/
+        .logo li {
+            margin: auto;
+        }
+
+        /*设置图片width为100%以使其随着浏览器宽度变化而变化*/
+        .logo img {
+            width: 100%;
+        }
+
+        .tag {
+            flex-flow: row wrap;
+            justify-content: space-around;
+            margin: 10px 45px;
+            border-bottom: 3px solid #eee;
+        }
+
+        .tag li {
+            margin: auto;
+            padding: 75px 20px 30px 20px;
+            background: url(images/task11-tag.png) 30% 0 no-repeat;
+            background-size: 80%;
+            font-weight: bold;
+        }
+
+        .column li {
+            margin: auto;
+            padding: 8%;
+            text-align: center;
+        }
+
+        .column li h5 {
+            margin-bottom: 20px;
+            font-size: 1.8vw;
+        }
+
+        .column li h6 {
+            font-size: 1vw;
+        }
+
+        .column li:nth-child(2) {
+            border-left: 3px solid #eeeeee;
+            border-right: 3px solid #eeeeee;
+        }
+
+        .module:before,
+        .module:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .module {
+            border-top: 10px solid #eee;
+        }
+
+        .module h3 {
+            margin: 0 3%;
+            font-size: 3vw;
+            border-bottom: 3px solid #eee;
+        }
+
+        .module img {
+            width: 10%;
+        }
+
+        .module div {
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .module ul {
+            flex: 1;
+        }
+
+        .module li {
+            float: left;
+            width: 40%;
+            margin: 2% 0 0 6%;
+            padding: 1.5% 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .article {
+            border-top: 20px solid #eee;
+        }
+
+        .article li {
+            padding-left: 10px;
+        }
+
+        .article li:first-child,
+        .article li:nth-child(2) {
+            border-bottom: 3px solid #eee;
+        }
+
+        .article h4 {
+            margin-top: 35px;
+            font-size: 22px;
+        }
+
+        .article span {
+            display: block;
+            margin-top: 60px;
+            color: #C1C1C1;
+        }
+
+        /*最后需要将三个图片变成一个整体,否则使用弹性布局会使得图片被拉伸至宽度100%,导致变形*/
+        /*变形原因是因为align-items默认为stretch,会将整个侧轴充满*/
+        /*所以需要三个图片横向排列成一排只能将其存入一个div中,从三个弹性项目变为一个*/
+        .article li:last-child {
+            margin-bottom: 30px;
+            flex-direction: column;
+            /*align-items:flex-start;*/
+        }
+        /*如果flex-direction和align-items均设置了属性,那么order属性设置似乎就无效化了*/
+
+        .article li:last-child h4 {
+            margin-left: 35px;
+            order: -1;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <a href="#">返回</a>
+    <strong>这是标题</strong>
+</div>
+<ul class="nav">
+    <li>导航</li>
+    <li>导航</li>
+    <li>导航</li>
+    <li>导航</li>
+    <li>导航</li>
+</ul>
+<ul class="logo">
+    <li>
+        <img src="images/task11-logo.jpg">
+    </li>
+</ul>
+<ul class="tag">
+    <li>标签</li>
+    <li>标签</li>
+    <li>标签</li>
+    <li>标签</li>
+    <li>标签</li>
+</ul>
+<ul class="column">
+    <li>
+        <img src="images/task11-column.jpg">
+        <h5>分栏一</h5>
+        <h6>分栏小标题</h6>
+    </li>
+    <li>
+        <img src="images/task11-column.jpg">
+        <h5>分栏二</h5>
+        <h6>分栏小标题</h6>
+    </li>
+    <li><img src="images/task11-column.jpg">
+        <h5>分栏三</h5>
+        <h6>分栏小标题</h6>
+    </li>
+</ul>
+<div class="module">
+    <h3>模块一</h3>
+    <div>
+        <img src="images/task11-column.jpg">
+        <ul>
+            <li>这是文案</li>
+            <li>这是文案</li>
+            <li>这是文案</li>
+            <li>这是文案</li>
+        </ul>
+    </div>
+</div>
+<div class="module">
+    <h3>模块二</h3>
+    <div>
+        <img src="images/task11-column.jpg">
+        <ul>
+            <li>这是文案</li>
+            <li>这是文案</li>
+            <li>这是文案</li>
+            <li>这是文案</li>
+        </ul>
+    </div>
+</div>
+<ul class="article">
+    <li>
+        <img src="images/task11-column.jpg">
+        <div>
+            <h4>这是文章标题字号为22的文章标题</h4>
+            <span>文章来源 6分钟前</span>
+        </div>
+    </li>
+    <li>
+        <img src="images/task11-column.jpg">
+        <div>
+            <h4>这是文章标题字号为22的文章标题</h4>
+            <span>文章来源 7分钟前</span>
+        </div>
+    </li>
+    <li>
+        <!--<div>-->
+            <img src="images/task11-column.jpg">
+            <img src="images/task11-column.jpg">
+            <img src="images/task11-column.jpg">
+        <!--</div>-->
+        <div>
+        <h4>这是文章标题字号为22的文章标题</h4>
+        <span>文章来源 7分钟前</span>
+        </div>
+    </li>
+</ul>
+</body>
+</html>

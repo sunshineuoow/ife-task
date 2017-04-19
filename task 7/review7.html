@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review 7</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            color: #B5B0B0;
+            font-size: 1.2vw;
+            font-family: "Microsoft Yahei";
+        }
+
+        /*网页文字一般都采用灰色,所以最好在通配符中设置字体颜色为灰色,后面再根据具体需求修改对应标签*/
+        ul li {
+            list-style: none;
+            display: inline-block;
+        }
+
+        /*通常a标签下划线都需要去除,所以写在最开始比较好*/
+        a {
+            text-decoration: none;
+        }
+        .header {
+            position: relative;
+        }
+        .header span {
+            display: inline-block;
+            margin: 12px 0 0 50px;
+        }
+
+        .header strong {
+            margin: 0 12px;
+            line-height: 30px;
+            color: black;
+            font-size: 1.5rem;
+            vertical-align: top;
+        }
+
+        .header ul {
+            position: absolute;
+            top: 10px;
+            right: 5%;
+        }
+
+        /*.header li{*/
+        /*margin: 5px 18px;*/
+        /*}*/
+        /*设置Margin位置能达到效果,但是下划线动画会不符合要求,只能在文字下方出现,不会超过文字长度*/
+
+        .header a {
+            padding: 5px 18px;
+            color: black;
+            transition: all .5s;
+        }
+
+        .header .l_link,
+        .header .color-red {
+            color: #e74f4d;
+        }
+
+        .header .l_link {
+            border-bottom: 5px solid #e74f4d;
+        }
+
+        .header .color-red {
+            font-weight: bold;
+        }
+
+        .header a:hover {
+            border-bottom: 5px solid #e74f4d;
+            transition: all .5s;
+        }
+
+        /*part1*/
+        .part1 {
+            position: relative;
+            height: 35vw;
+            background: url(images/task07-background01.png) no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100% auto;
+            color: white;
+        }
+
+        .part1-text {
+            position: absolute;
+            left: 13%;
+        }
+
+        .part1 h2 {
+            margin: .83em 0;
+            color: white;
+            font-size: 4.8vw;
+        }
+
+        .part1 p,
+        .part2 p,
+        .part3 p,
+        .part4 p,
+        .part5 p,
+        .part5 h3,
+        .part6 p,
+        .part6 h3,
+        .part8 p,
+        .footer h3,
+        .footer p {
+            margin: 1em 0;
+        }
+
+        .part1 p {
+            color: white;
+        }
+
+        .part1 p:nth-child(2) {
+            font-size: 1.8vw;
+        }
+
+        .part1 input {
+            width: 18vw;
+            font-size: 3vw;
+            color: white;
+            background-color: #e74f4d;
+            border: none;
+            transition: all .5s;
+        }
+
+        .part1 input:hover {
+            border-radius: 20px;
+            transition: all .5s;
+        }
+
+        /*part2*/
+        /*只有将ul设置为flex布局才能使得弹性项目均匀分配空间*/
+        /*将part2设置为flex并且设置项目分散方式,还仍然需要设置li的宽度才能达到相同效果*/
+        .part2 {
+            /*display: flex;*/
+            /*justify-content: space-around;*/
+            background: url(images/task07-background02.png) no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100% auto;
+        }
+
+        .part2 ul {
+            display: flex;
+        }
+
+        .part2 li {
+            /*width: 15vw;*/
+            margin: 4vw 2vw;
+            padding: 2vw;
+            text-align: center;
+        }
+
+        /*part3*/
+        .part3 {
+            margin: -50px 0;
+            background-color: #ededec;
+            text-align: center;
+        }
+
+        .part3 img {
+            margin-top: 8%;
+            width: 7vw;
+        }
+
+        .part3 p {
+            padding-bottom: 10%;
+            font-size: 3vw;
+            color: #B5B0B0;
+        }
+
+        /*part4*/
+        .part4 {
+            padding-bottom: 10%;
+            background: url(images/task07-background04.png) no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100% auto;
+            text-align: center;
+        }
+
+        .part4 h4,
+        .part4 p,
+        .part4 input {
+            color: white;
+        }
+
+        .part4 h4 {
+            margin: 1.33em 0;
+            padding-top: 2%;
+            font-size: 1.5rem;
+        }
+
+        .part4 p {
+            padding-bottom: 2%;
+        }
+
+        .part4 select,
+        .part4 input {
+            display: inline-block;
+            height: 4vw;
+            width: 16vw;
+            line-height: 4vw;
+            border: 1px solid #e74f4d;
+            transition: all .5s;
+        }
+
+        .part4 input {
+            background-color: #e74f4d;
+        }
+
+        .part4 a:hover,
+        .part4 select:hover,
+        .part4 input:hover {
+            border: 1px solid #01BEEF;
+            transition: all .5s;
+        }
+
+        /*part5*/
+        .part5 {
+            padding-top: 5%;
+            background-color: #f7f7f7;
+        }
+
+        .part5 ul {
+            display: flex;
+            justify-content: space-around;
+            margin: 1em 0 0;
+            text-align: center;
+            background-color: #f7f7f7;
+        }
+
+        .part5 img {
+            width: 70%;
+            border: 10px solid white;
+        }
+
+        .part5 h3 {
+            font-size: 1.5rem;
+            color: black;
+        }
+
+        .part5 p {
+            font-size: .7rem;
+        }
+
+        /*part6*/
+        .part6 {
+            display: flex;
+            height: 41vw;
+        }
+
+        .part6-left {
+            flex: 2;
+            background: url(images/task07-background06.png) no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            text-align: center;
+        }
+
+        .part6-left p {
+            line-height: 10vw;
+        }
+
+        .part6-left span {
+            display: block;
+            color: white;
+        }
+
+        .part6-left span:first-child {
+            font-size: 2.2rem;
+        }
+
+        .part6-left span:nth-child(2) {
+            font-size: 6rem;
+        }
+
+        .part6-right {
+            flex: 1;
+        }
+
+        .part6-right h3 {
+            text-align: center;
+            color: black;
+        }
+
+        .part6-right span {
+            display: inline-block;
+            padding: 0 3vw;
+        }
+
+        .part6-right a,
+        .part7 a {
+            display: block;
+            width: 30%;
+            margin: 10% auto;
+            padding: 2%;
+            border: 1px solid #e74f4d;
+            color: #e74f4d;
+            text-align: center;
+        }
+
+        /*part7*/
+        .part7 {
+            display: flex;
+            text-align: center;
+        }
+
+        .part7-1 {
+            flex: 1;
+            background-color: #e74f4d;
+        }
+
+        .part7 p {
+            padding: 10vw;
+        }
+
+        .part7-1 p {
+            color: #fff;
+        }
+
+        .part7-2 p {
+            color: #e74f4d;
+        }
+
+        .part7-1 a {
+            color: white;
+            border: 1px solid white;
+        }
+
+        .part7-2 {
+            flex: 1;
+        }
+
+        .part7-3 {
+            flex: 1;
+            background: url(images/task07-background07.png) no-repeat;
+        }
+
+        /*part8*/
+        .part8 p {
+            text-align: center;
+        }
+        .part8 span:first-child{
+            display: block;
+            color: black;
+            font-size: 2rem;
+        }
+        .part8-bottom{
+            display: flex;
+        }
+        .part8-l{
+            flex:1;
+            min-width: 370px;
+            margin: 3.2% 10%;
+        }
+        .part8-l h5{
+            margin: 1.67em 0;
+            color: black;
+        }
+        .part8-l1 a{
+            display: block;
+            color: black;
+            text-align: right;
+            transition: all .5s;
+        }
+        .part8-l1 a:hover{
+            color:white;
+            background-color: #e74f4d;
+            transition: all .5s;
+        }
+        .part8-r{
+            flex: 1;
+        }
+        .part8-r li{
+            width: 43%;
+            min-width: 274px;
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #ededee;
+        }
+        .part8-r input{
+            color: black;
+            border: none;
+            background-color: #ededee;
+            transition: all .5s;
+        }
+        .part8-r textarea{
+            width: 90%;
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #ededee;
+            transition: all .5s;
+        }
+        .part8-r textarea:hover{
+            color: black;
+        }
+        /*input点开边框变成成蓝色不需要加入hover伪类*/
+        /*.part8-r input:visited,*/
+        /*.part8-r textarea:visited{*/
+            /*border: 1px solid #01BEEF;*/
+            /*transition: all .5s;*/
+        /*}*/
+
+        .part8-r .submit{
+            width: 94%;
+            height: 3rem;
+            margin-top: 3%;
+            cursor:pointer;
+
+        }
+        .part8-r .submit:hover{
+            background-color: #e74f4d;
+            color: #fff;
+            transition: all .5s;
+        }
+        /*footer*/
+        .footer {
+            padding: 3.5%;
+            background: #32353e;
+            text-align: center;
+        }
+        .footer h3,
+        .footer p,
+        .footer a{
+            color: #fff;
+        }
+        .footer input{
+            padding: 10px 180px 10px 10px;
+        }
+        .footer .mail_submit{
+            margin-left: -5px;
+            padding: 10px 18px;
+            background-color: #686166;
+        }
+        .footer li{
+            margin: 10px;
+            padding: 10px;
+        }
+        .footer1 {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 50px;
+            line-height: 50px;
+            background: #2f3038;
+        }
+        .footer1 span{
+            position: absolute;
+            left: 50px;
+            color: #fff;
+        }
+        .footer1 a{
+            position: absolute;
+            right: 50px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+        <span>
+            <img src="images/task07-header02.png">
+            <strong>新世界@XJW</strong>
+        </span>
+    <ul>
+        <li><a href="#" class="l_link">首页</a></li>
+        <li><a href="#">最新活动</a></li>
+        <li><a href="#">项目介绍</a></li>
+        <li><a href="#">爱心社区</a></li>
+        <li><a href="#">关于我们</a></li>
+        <li><a href="#" class="color-red"><img src="images/task07-header01.png">登录</a></li>
+    </ul>
+</div>
+<div class="part1">
+    <div class="part1-text">
+        <h2>Time of New Life</h2>
+        <p>新时代，年轻的人们让我们一起</p>
+        <p>体验新生活，享受新生活</p>
+        <input type="button" name="start" value="开始体验">
+    </div>
+</div>
+<div class="part2">
+    <ul>
+        <li><img src="images/task07-background02-01.png">
+            <p>打造全新世界观，让你更爱你的生活</p></li>
+        <li><img src="images/task07-background02-02.png">
+            <p>丰富多彩的公益活动，发挥新世界的主人公意识</p></li>
+        <li><img src="images/task07-background02-03.png">
+            <p>时尚的新理念，超前体验未知的生活</p></li>
+        <li><img src="images/task07-background02-04.png">
+            <p>完善的培养机制，培养你全新的世界观</p></li>
+    </ul>
+</div>
+<div class="part3">
+    <img src="images/task07-background03-01.png">
+    <p>关于新世界，你不知道的还有什么？</p>
+</div>
+<div class="part4">
+    <h4>查找新世界城市活动信息</h4>
+    <p>每个城市都有不同的活动信息，请自主查询您所需要了解的城市</p>
+    <select name="country" id="country">
+        <option>中国</option>
+        <option>美国</option>
+    </select>
+    <select name="province" id="province">
+        <option>湖南省</option>
+        <option>湖北省</option>
+        <option>香港特别行政区</option>
+    </select>
+    <select name="city" id="city" onchange="Prochoose()">
+        <option>长沙市</option>
+        <option>株洲市</option>
+        <option>湘潭市</option>
+        <option>邵阳市</option>
+        <option>岳阳市</option>
+        <option>张家界市</option>
+        <option>益阳市</option>
+        <option>常德市</option>
+        <option>娄底市</option>
+        <option>郴州市</option>
+        <option>永州市</option>
+        <option>怀化市</option>
+        <option>湘西土家族苗族自治州</option>
+    </select>
+    <input type="button" name="search" value="搜索">
+</div>
+<div class="part5">
+    <ul>
+        <li>
+            <img src="images/task07-background05-01.png">
+            <h3>北京活动</h3>
+            <p>新社区大联盟</p>
+        </li>
+        <li>
+            <img src="images/task07-background05-02.png">
+            <h3>上海活动</h3>
+            <p>夜上海新景观探索</p>
+        </li>
+        <li>
+            <img src="images/task07-background05-03.png">
+            <h3>深圳活动</h3>
+            <p>全新海岸观点站</p>
+        </li>
+        <li>
+            <img src="images/task07-background05-01.png">
+            <h3>香港活动</h3>
+            <p>奢侈消费大派送</p>
+        </li>
+    </ul>
+</div>
+<div class="part6">
+    <div class="part6-left">
+        <p>
+            <span>新世界</span>
+            <span>TIME</span>
+            <span>
+            @新世界-北京<br>
+            "2017.3.23"
+            </span>
+        </p>
+    </div>
+    <div class="part6-right">
+        <h3>
+            新世界/
+            <span style="color:#e74f4d">01</span>
+        </h3>
+        <span>新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界</span>
+        <a href="#">更多详情</a>
+    </div>
+</div>
+<div class="part7">
+    <div class="part7-1">
+        <p>新时代<br>关于爱生活的我们</p>
+        <a href="#">查看更多</a>
+    </div>
+    <div class="part7-2">
+        <p>新时代<br>关于爱生活的我们</p>
+        <a href="#">查看更多</a>
+    </div>
+    <div class="part7-3"></div>
+</div>
+<div class="part8">
+    <p>
+        <span>成为我们志愿者</span>
+        新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情 那就不要犹豫，快来加入我们，成为改变所有人生活的人
+    </p>
+    <div class="part8-bottom">
+        <div class="part8-l">
+            <div class="part8-l1">
+                <h5>新世界志愿者协议</h5>
+                <span>加入新世界志愿者的人员必须遵守中华人民共共和国的 相关法律法规，并且本着平等资源的原则 ......</span>
+                <a href="#"><img src="images/task07-background08-01.png">&nbsp;more</a>
+            </div>
+            <div class="part8-l1">
+                <h5>新世界志愿者权利</h5>
+                <span>新世界志愿者享受新世界内部所有资源共享的权利，并且享受所在四新世界活动的优先参与资格</span>
+                <a href="#"><img src="images/task07-background08-01.png">&nbsp;more</a>
+            </div>
+            <div class="part8-l1">
+                <h5>更多条款</h5>
+                <a href="#"><img src="images/task07-background08-01.png">&nbsp;more</a>
+            </div>
+        </div>
+        <div class="part8-r">
+            <form action="#" method="post">
+                <ul>
+                    <li>
+                        <label for="name">姓名:</label>
+                        <input type="text" name="name" id="name">
+                    </li>
+                    <li>
+                        <label for="age">年龄:</label>
+                        <input type="text" name="age" id="age">
+                    </li>
+                    <li>
+                        <label for="phone">联系方式:</label>
+                        <input type="text" name="phone-number" id="phone">
+                    </li>
+                    <li>
+                        <label for="address">联系地址:</label>
+                        <input type="text" name="address" id="address">
+                    </li>
+                </ul>
+                <textarea rows="8" cols="69" name="dream">请简单描述您梦想的生活</textarea>
+                <input type="button" value="提交申请" class="submit">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <h3>联系我们</h3>
+    <p>为了更好的获取我们最新的产品资讯，您可以留下您的电子邮箱快速订阅我们的产品资讯 也可以通过以下任何方式关注我们动态</p>
+    <input type="text" name="mail_address" placeholder="someone@email.com">
+    <a href="#" class="mail_submit">提交</a>
+    <ul>
+        <li><a href="#"><img src="images/task07-footer01.png"></a></li>
+        <li><a href="#"><img src="images/task07-footer02.png"></a></li>
+        <li><a href="#"><img src="images/task07-footer03.png"></a></li>
+        <li><a href="#"><img src="images/task07-footer04.png"></a></li>
+    </ul>
+    <div class="footer1">
+        <span>@2017新世界 By XJW</span>
+        <a href="#">back to top</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review 4</title>
+    <style type="text/css">
+        .box1 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            height: 200px;
+            width: 400px;
+            margin: auto;
+            overflow: hidden;
+            background-color: #cccccc;
+        }
+        /*overflow:hidden;指的是元素内容溢出主体盒子box1的部分隐藏*/
+
+        .circle1,
+        .circle2 {
+            position: relative;
+            height: 100px;
+            width: 100px;
+            border-radius: 50px;
+            background-color: #ffcc00;
+        }
+
+        .circle1 {
+            top: -50px;
+            left: -50px;
+        }
+
+        .circle2 {
+            bottom: -50px;
+            right: -350px;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+</div>
+</body>
+</html>

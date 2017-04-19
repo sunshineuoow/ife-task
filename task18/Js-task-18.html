@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 06</title>
+    <style>
+        ul{
+            padding-left: 0;
+        }
+        li{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+            padding: 10px;
+            line-height: 50px;
+            background-color: red;
+            color: #fff;
+            text-align: center;
+            overflow: auto;
+        }
+        li:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" name="number" id="number" placeholder="请输入数字">
+        <button>左侧入</button>
+        <button>右侧入</button>
+        <button>左侧出</button>
+        <button>右侧出</button>
+    </div>
+    <ul id="content"></ul>
+<script>
+    var text = document.getElementById("number");
+    var btns = document.getElementsByTagName("button");
+    var content = document.getElementById("content");
+//   失去焦点之后判断输入框是否是数字
+    text.addEventListener("blur",function() {
+        if(!text.value.match(/^[0-9]*$/)){
+            alert("请输入数字!");
+            text.value = "";
+        }
+    },false);
+//    左进
+    btns[0].addEventListener("click",function(){
+       if(text.value == "" || text.value == null){
+            return false;
+        }
+        var newItem = document.createElement("li");
+        var textnode = document.createTextNode(text.value);
+        newItem.appendChild(textnode);
+        content.insertBefore(newItem,content.childNodes[0]);
+    },false)
+//    右进
+    btns[1].addEventListener("click",function() {
+        if (text.value == "" || text.value == null) {
+            return false;
+        }
+        var newItem = document.createElement("li");
+        var textnode = document.createTextNode(text.value);
+        newItem.appendChild(textnode);
+        content.appendChild(newItem);
+    },false)
+//    左出
+    btns[2].addEventListener("click",function(){
+        if(content.childNodes.length ==0){
+            alert("模块已经没啦!请先输入数字~");
+            return false;
+        }
+        alert("删除最左边节点:" + content.firstChild.innerHTML);
+        content.removeChild(content.firstChild);
+    },false)
+//    右出
+    btns[3].addEventListener("click",function(){
+        if(content.childNodes.length ==0){
+            alert("模块已经没啦!请先输入数字~");
+            return false;
+        }
+        alert("删除最右边节点:" + content.lastChild.innerHTML);
+        content.removeChild(content.lastChild);
+    },false)
+</script>
+<!--    整体思路如下:
+        1.首先获取输入框中文字,若不是数字需要提示用户输入数字
+        2.由于插入的是一个个正方形图样,因此想到使用ul-li的标签进行排布
+        3.先将li的样式于css中书写完毕,这样就只需要在js中进行插入元素的操作
+        4.从左入开始编写,即先创建li元素,然后获取输入框的数值并且将其变成li下的文本值,之后将li插入在ul下的第一个子节点之前,即可以实现左入
+        5.类似的,右入即将li元素插入到ul下最后一个位置即可(使用appendChild)
+        6.编写左出,即先找到li元素内的文档节点,然后获取其值并告知用户删除的是哪一个元素,之后使用removeChild即可移除
+        7.右出和左出类似,将移除第一个元素节点变为最后一个元素节点即可
+-->
+</body>
+</html>

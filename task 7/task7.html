@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 7</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            color: #B5B0B0;
+            font-size: 1.2vw;
+            font-family: "Microsoft Yahei"
+        }
+
+        /*******/
+        /*标题栏*/
+        /******/
+        ul {
+            /*list-style: none; ul不清除表格格式也没有关系*/
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            display: inline-block;
+            margin: 0;
+        }
+        /*使用inline-block使得表格元素同行显示*/
+
+        .header {
+            position: relative;
+        }
+
+        .header span {
+            display: inline-block;
+            margin: 12px 0 0 50px;
+        }
+        /*使用inline-block使得图片和文字同行显示*/
+
+        .header strong {
+            margin: 0px 12px;
+            line-height: 30px;
+            font-size: 1.5rem;
+            vertical-align: top;
+            color: black;
+        }
+        /*使用line-height使文字相对于图片居中显示*/
+
+        .menu {
+            position: absolute;
+            top: 10px;
+            right: 5%;
+        }
+        /*固定菜单栏在右上角*/
+
+        .menu a {
+            padding: 5px 18px;
+            color: black;
+            text-decoration: none;
+            transition: all .3s;
+        }
+
+        .l_link a {
+            color: #e74f4d;
+            border-bottom: solid #e74f4d 5px;
+        }
+
+        .login a {
+            color: #e74f4d;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            border-bottom: solid #e74f4d 5px;
+            transition: all .3s;
+        }
+        /*设置a标签的动画格式*/
+
+        /******/
+        /**第一部分**/
+        /******/
+        .part01 {
+            position: relative;
+            background: url(images/task07-background01.png) no-repeat;
+            background-size: 100% auto;
+            height: 35vw;
+            color: white;
+        }
+
+        .part01_text {
+            position: absolute;
+            left: 13%;
+        }
+
+        .part01 h2,
+        .part01 p {
+            margin: 1em 0;
+            color: white;
+        }
+
+        .part01 h2 {
+            margin: .83em 0;
+            font-size: 4.8vw;
+        }
+
+        .part01 p:nth-child(2) {
+            font-size: 1.8vw;
+        }
+
+        .part01 input {
+            width: 18vw;
+            border: none;
+            font-size: 3vw;
+            color: white;
+            background-color: #e74f4d;
+            transition: all .5s;
+        }
+
+        .part01 input:hover {
+            transition: all .5s;
+            border-radius: 20px;
+        }
+
+        /******/
+        /*第二部分*/
+        /******/
+        .part02 {
+            background: url(images/task07-background02.png) no-repeat;
+            background-size: 100% auto;
+        }
+
+        .part02 ul {
+            display: flex;
+        }
+
+        .part02 li {
+            margin: 4vw 2vw;
+            padding: 2vw;
+            text-align: center;
+        }
+
+        .part02 p {
+            margin: 1em 0;
+        }
+
+        /******/
+        /*第三部分*/
+        /******/
+        .part03 {
+            background-color: #ededec;
+            text-align: center;
+            margin-bottom: -50px;
+        }
+
+        .part03 img {
+            margin-top: 8%;
+            width: 7vw;
+            border: 0;
+        }
+
+        .part03 p {
+            margin: 1em 0;
+            padding-bottom: 10%;
+            font-size: 3vw;
+        }
+
+        /******/
+        /*第四部分*/
+        /******/
+        .part04 {
+            padding-bottom: 10%;
+            background: url(images/task07-background04.png) no-repeat;
+            background-size: 100% auto;
+            text-align: center;
+        }
+
+        .part04 h4,
+        .part04 p,
+        .part04 a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .part04 h4 {
+            margin: 1.33em 0;
+            padding-top: 2%;
+            font-size: 1.5rem;
+        }
+
+        .part04 p {
+            margin: 1em 0;
+            padding-bottom: 2%;
+        }
+
+        .part04 select,
+        .part04 a {
+            display: inline-block;
+            border: 1px solid #e74f4d;
+            width: 16vw;
+            height: 4vw;
+            line-height: 4vw;
+            transition: all .5s;
+        }
+
+        .part04 a {
+            background-color: #e74f4d;
+        }
+
+        .part04 select:hover,
+        .part04 a:hover {
+            border: 1px solid #01BEEF;
+            transition: all .5s;
+        }
+
+        /******/
+        /*第五部分*/
+        /******/
+        .part05 {
+            background-color: #f7f7f7;
+            padding-top: 5%;
+            text-align: center;
+        }
+
+        .part05 ul {
+            display: flex;
+            margin: 1em 0 0;
+            justify-content: space-around;
+        }
+
+        .part05 img {
+            width: 70%;
+            border: 10px solid white;
+        }
+
+        .part05 h2 {
+            margin: 1em 0;
+            color: black;
+            font-size: 1.5rem;
+        }
+
+        .part05 p {
+            margin: 1em 0;
+            font-size: .7rem;
+        }
+
+        /******/
+        /*第六部分*/
+        /******/
+        .part06 {
+            display: flex;
+            height: 41vw;
+        }
+
+        .part06-left {
+            flex: 2;
+            background: url(images/task07-background06.png) no-repeat;
+            background-size: 100%;
+            text-align: center;
+        }
+
+        .part06-left p {
+            margin: 1em 0;
+            line-height: 10vw;
+        }
+
+        .part06-left span {
+            display: block;
+            color: #fff;
+        }
+
+        .part06-left span:first-child {
+            font-size: 2.2rem;
+        }
+
+        .part06-left span:nth-child(2) {
+            font-size: 6rem;
+        }
+
+        .part06-right {
+            flex: 1;
+        }
+
+        .part06-right h3 {
+            margin: 1em 0;
+            color: black;
+            text-align: center;
+        }
+
+        .part06-right span {
+            display: inline-block;
+            padding: 0 3vw;
+        }
+
+        .part06-right a,
+        .part07-left a,
+        .part07-middle a {
+            display: block;
+            width: 30%;
+            padding: 2%;
+            margin: 10% auto;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .part06-right a,
+        .part07-middle a {
+            border: 1px solid #e74f4d;
+            color: #e74f4d;
+        }
+
+        /******/
+        /*第七部分*/
+        /******/
+        .part07 {
+            display: flex;
+        }
+
+        .part07-left,
+        .part07-middle {
+            text-align: center;
+            vertical-align: center;
+        }
+
+        .part07-left {
+            flex: 1;
+            background-color: #e74f4d;
+        }
+
+        .part07-middle {
+            flex: 1;
+        }
+
+        .part07-right {
+            flex: 1;
+            background: url(images/task07-background07.png) no-repeat;
+        }
+
+        .part07 p {
+            padding: 10vw;
+        }
+
+        .part07-left p {
+            color: #fff;
+        }
+
+        .part07-left a {
+            border: 1px solid #fff;
+            color: white;
+        }
+
+        .part07-middle p {
+            color: #e74f4d;
+        }
+
+        /******/
+        /*第八部分*/
+        /******/
+        .part08 p {
+            margin: 1em 0;
+            text-align: center;
+        }
+
+        .part08 span:first-child {
+            display: block;
+            color: black;
+            font-size: 2rem;
+        }
+
+        .part08-bottom {
+            display: flex;
+        }
+
+        .part08-bottom-left {
+            flex: 1;
+            min-width: 370px;
+            margin: 3.2% 10%;
+        }
+
+        .part08-bottom-left h5 {
+            margin: 1.67em 0;
+            color: black;
+        }
+
+        .part08-bottom-left a {
+            display: block;
+            text-align: right;
+            text-decoration: none;
+            color: black;
+        }
+
+        .part08-bottom-left a:link {
+            transition: all .5s;
+        }
+
+        .part08-bottom-left a:hover {
+            background-color: #e74f4d;
+            color: white;
+            transition: all .5s;
+        }
+
+        .part08-bottom-right {
+            flex: 1;
+        }
+
+        .part08-bottom-right li {
+            width: 43%;
+            min-width: 274px;
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #ededee;
+        }
+
+        .part08-bottom-right input {
+            background-color: #ededee;
+            color: black;
+            border: none;
+            transition: all .5s;
+        }
+
+        .part08-bottom-right textarea {
+            width: 90%;
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #ededee;
+            overflow: auto;
+            transition: all .5s;
+        }
+
+        .part08-bottom-right textarea:hover {
+            color: black;
+        }
+
+        .submit {
+            width: 94%;
+            margin-top: 3%;
+            height: 3rem;
+            cursor: pointer;
+            background-color: #ededee;
+            color: black;
+        }
+
+        .submit:hover {
+            background-color: #e74f4d;
+            color: white;
+            transition: all .5s;
+        }
+
+        /******/
+        /*底部*/
+        /******/
+        .footer {
+            background-color: #32353e;
+            padding: 3.5%;
+            text-align: center;
+        }
+
+        .footer h3,
+        .footer p {
+            margin: 1em 0;
+            color: #fff;
+        }
+
+        .footer input {
+            padding: 10px 180px 10px 10px;
+        }
+
+        .footer li {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .mail_submit {
+            display: inline-block;
+            height: 45px;
+            width: 75px;
+            margin-left: -5px;
+            line-height: 45px;
+            color: white;
+            background-color: #686166;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            position: absolute;
+            right: 0;
+            left: 0;
+            height: 50px;
+            line-height: 50px;
+            background-color: #2f3038;
+        }
+
+        .footer-bottom span {
+            position: absolute;
+            left: 50px;
+            color: white;
+        }
+
+        .footer-bottom a {
+            position: absolute;
+            right: 50px;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    <script type="text/javascript">
+        var Province_City = {
+            '湖南省': ["长沙市", "株洲市", "湘潭市", "衡阳市", "邵阳市", "岳阳市", "张家界市", "益阳市", "常德市", "娄底市", "郴州市", "永州市", "怀化市", "湘西土家族苗族自治州"],
+            '湖北省': ["武汉市", "黄石市", "十堰市", "宜昌市", "襄阳市", "鄂州市", "荆门市", "孝感市", "荆州市", "黄冈市", "咸宁市", "随州市", "仙桃市", "恩施土家族苗族自治州", "潜江市", "天门市", "神农架林区"],
+            '香港特别行政区': ["香港岛", "九龙", "新界"],
+        }
+        function choosePro() {
+            var pro = document.getElementById("province").value;
+            var city = document.getElementById("city");
+            city.options.length = 0;
+            for (var x in Province_City) {
+                if (x === pro) {
+                    var cityLen = Province_City[x].length;
+                    for (var i = 0; i < cityLen; i++) {
+                        var item = new Option(Province_City[x][i], Province_City[x][i]);
+                        city.options.add(item);
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="header">
+        <span>
+            <img src="images/task07-header02.png" alt="logo">
+            <strong>新世界@XJW</strong>
+        </span>
+    <ul class="menu">
+        <li class="l_link"><a href="#">首页</a></li>
+        <li class="n_link"><a href="#">最新活动</a></li>
+        <li class="n_link"><a href="#">项目介绍</a></li>
+        <li class="n_link"><a href="#">爱心社区</a></li>
+        <li class="n_link"><a href="#">关于我们</a></li>
+        <li class="login"><a href="#"><img src="images/task07-header01.png" alt="login">登录</a></li>
+    </ul>
+</div>
+<div class="part01">
+    <div class="part01_text">
+        <h2>Time of new life</h2>
+        <p>新时代，年轻的人们让我们一起</p>
+        <p>体验新生活，享受新生活</p>
+        <input type="button" value="开始体验">
+    </div>
+</div>
+<div class="part02">
+    <ul>
+        <li>
+            <img src="images/task07-background02-01.png">
+            <p>打造全新世界观，让你更爱你的生活</p>
+        </li>
+        <li>
+            <img src="images/task07-background02-02.png">
+            <p>丰富多彩的公益活动，发挥新世界的主人公意识</p>
+        </li>
+        <li>
+            <img src="images/task07-background02-03.png">
+            <p>时尚的新理念，超前体验未知的生活</p>
+        </li>
+        <li>
+            <img src="images/task07-background02-04.png">
+            <p>完善的培养机制，培养你全新的世界观</p>
+        </li>
+    </ul>
+</div>
+<div class="part03">
+    <img src="images/task07-background03-01.png">
+    <p>关于新世界，你不知道的还有什么？</p>
+</div>
+<div class="part04">
+    <h4>查找新世界城市活动信息</h4>
+    <p>每个城市都有不同的活动信息，请自主查询您所需要了解的城市</p>
+    <select name="国家" id="country">
+        <option>中国</option>
+        <option>美国</option>
+    </select>
+    <select name="省份" id="province" onchange="choosePro()">
+        <option>湖南省</option>
+        <option>湖北省</option>
+        <option>香港特别行政区</option>
+    </select>
+    <select name="城市" id="city">
+        <option>长沙市</option>
+        <option>株洲市</option>
+        <option>湘潭市</option>
+        <option>衡阳市</option>
+        <option>邵阳市</option>
+        <option>岳阳市</option>
+        <option>张家界市</option>
+        <option>益阳市</option>
+        <option>常德市</option>
+        <option>娄底市</option>
+        <option>郴州市</option>
+        <option>永州市</option>
+        <option>怀化市</option>
+        <option>湘西土家族苗族自治州</option>
+    </select>
+    <a href="#">搜索</a>
+</div>
+<div class="part05">
+    <ul>
+        <li>
+            <img src="images/task07-background05-01.png">
+            <h2>北京活动</h2>
+            <p>新社区大联盟</p>
+        </li>
+        <li>
+            <img src="images/task07-background05-02.png">
+            <h2>上海活动</h2>
+            <p>夜上海新景观探索</p>
+        </li>
+        <li>
+            <img src="images/task07-background05-03.png">
+            <h2>深圳活动</h2>
+            <p>全新海岸观点站</p>
+        </li>
+        <li>
+            <img src="images/task07-background05-04.png">
+            <h2>香港活动</h2>
+            <p>奢侈消费大派送</p>
+        </li>
+    </ul>
+</div>
+<div class="part06">
+    <div class="part06-left">
+        <p>
+            <span>新世界</span>
+            <span class="h2">TIME</span>
+            <span>@新世界-北京<br>
+                    "2017.03.15"
+                </span>
+        </p>
+    </div>
+    <div class="part06-right">
+        <h3>新世界/<span style="color:#e74f4d">01</span></h3>
+        <span>新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界</span>
+        <a href="#">更多详情</a>
+    </div>
+</div>
+<div class="part07">
+    <div class="part07-left">
+        <p>新时代<br/>关于爱生活的我们</p>
+        <a href="#">查看更多</a>
+    </div>
+    <div class="part07-middle">
+        <p>新时代<br/>关于爱生活的我们</p>
+        <a href="#">查看更多</a>
+    </div>
+    <div class="part07-right"></div>
+</div>
+<div class="part08">
+    <p>
+        <span>成为我们志愿者</span>
+        新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情 那就不要犹豫，快来加入我们，成为改变所有人生活的人
+    </p>
+    <div class="part08-bottom">
+        <div class="part08-bottom-left">
+            <div class="part08-l1">
+                <h5>新世界志愿者协议</h5>
+                <span>加入新世界志愿者的人员必须遵守中华人民共共和国的 相关法律法规，并且本着平等资源的原则 ......</span>
+                <a href="#"><img src="images/task07-background08-01.png">&nbsp;more</a>
+            </div>
+            <div class="part08-l2">
+                <h5>新世界志愿者权利</h5>
+                <span>新世界志愿者享受新世界内部所有资源共享的权利，并且享受所在四新世界活动的优先参与资格</span>
+                <a href="#"><img src="images/task07-background08-01.png">&nbsp;more</a>
+            </div>
+            <div class="part08-l3">
+                <h5>更多条款</h5>
+                <a href="#"><img src="images/task07-background08-01.png">&nbsp;more</a>
+            </div>
+        </div>
+        <div class="part08-bottom-right">
+            <form method="post" action="#">
+                <ul>
+                    <li><label for="name">姓名:</label><input type="text" name="name" id="name"></li>
+                    <li><label for="age">年龄:</label><input type="text" name="age" id="age"></li>
+                    <li><label for="phone">联系方式:</label><input type="text" name="phone" id="phone"></li>
+                    <li><label for="address">联系地址:</label><input type="text" name="address" id="address"></li>
+                </ul>
+                <textarea rows="8" cols="69" name="dream">请简单描述您梦想的生活</textarea>
+                <input type="button" value="提交申请" class="submit">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <h3>联系我们</h3>
+    <p>为了更好的获取我们最新的产品资讯，您可以留下您的电子邮箱快速订阅我们的产品资讯 也可以通过以下任何方式关注我们动态</p>
+    <input type="text" name="mail_address" placeholder="someone@email.com">
+    <a href="#" class="mail_submit">提交</a>
+    <ul>
+        <li><a href="#"><img src="images/task07-footer01.png"></a></li>
+        <li><a href="#"><img src="images/task07-footer02.png"></a></li>
+        <li><a href="#"><img src="images/task07-footer03.png"></a></li>
+        <li><a href="#"><img src="images/task07-footer04.png"></a></li>
+    </ul>
+    <div class="footer-bottom">
+        <span>@2017新世界 By Xjw</span>
+        <a href="#">back to top</a>
+    </div>
+</div>
+</body>
+</html>

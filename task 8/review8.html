@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review 8</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*使用浮动布局一定要记得清除浮动*/
+        .row:before,
+        .row:after {
+            content: "";
+            clear: both;
+        }
+
+        .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8 {
+            float: left;
+            /*height: 50px;*/
+            padding: 10px;
+            /*background-color: #eeeeee;*/
+            box-sizing: border-box;
+            /*border: 1px solid #999999;*/
+        }
+
+        /*若只用div做一个方框,会导致盒子铺满一列,并且使用margin会导致3个盒子不能占据同一行
+        所以需要在div中内嵌一个内容盒子div做成一个带有边框的盒子,并且设置大盒子的padding和小盒子的height
+        使得三个盒子能够同时显示*/
+        .content {
+            /*padding: 10px;*/
+            height: 50px;
+            box-sizing: border-box;
+            background-color: #eeeeee;
+            border: 1px solid #999999;
+        }
+
+        .span1,
+        .span2 {
+            width: 33.3333333333%;
+        }
+
+        .span4, .span8 {
+            width: 50%;
+        }
+
+        .span3 {
+            width: 25%;
+        }
+
+        .span6, .span7 {
+            width: 16.66666666666667%;
+        }
+
+        .span5 {
+            width: 8.333333333333333%;
+        }
+
+        @media screen and (max-width: 768px) {
+            .span1 {
+                width: 50%;
+            }
+
+            .span2 {
+                width: 100%;
+            }
+
+            .span5 {
+                width: 16.66666666666667%;
+            }
+
+            .span6 {
+                width: 66.66666666666667%;
+            }
+
+            .span7, .span8 {
+                width: 25%;
+            }
+        }
+        /*随着屏幕宽度响应变化,使用@media and screen设置不同宽度下模型宽度(使用百分比)*/
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="span1">
+        <div class="content"></div>
+    </div>
+    <div class="span1">
+        <div class="content"></div>
+    </div>
+    <div class="span2">
+        <div class="content"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="span3">
+        <div class="content"></div>
+    </div>
+    <div class="span4">
+        <div class="content"></div>
+    </div>
+    <div class="span3">
+        <div class="content"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="span5">
+        <div class="content"></div>
+    </div>
+    <div class="span5">
+        <div class="content"></div>
+    </div>
+    <div class="span6">
+        <div class="content"></div>
+    </div>
+    <div class="span7">
+        <div class="content"></div>
+    </div>
+    <div class="span8">
+        <div class="content"></div>
+    </div>
+</div>
+</body>
+</html>

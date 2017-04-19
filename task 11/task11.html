@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task11</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-family: "Microsoft Yahei";
+        }
+
+        /*cursor:pointer;可以使得鼠标移动到元素时变成手指*/
+        li {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        /*标题使用弹性布局之后strong标签才能用margin: auto;自动居中*/
+        .header,
+        .nev,
+        .logo,
+        .tag,
+        .column,
+        .module div,
+        .article li {
+            display: flex;
+        }
+
+        .header {
+            height: 50px;
+            padding: 1%;
+            background-color: #91d4da;
+        }
+
+        .header a,
+        .header strong {
+            color: #fff;
+        }
+
+        .header a {
+            background: url(images/task11-header01.png) 63% 0% no-repeat;
+            background-size: 16%;
+            padding-left: 6%;
+            position: absolute;
+            top: 5%;
+            left: 3.5%;
+            font-size: 1.2vw;
+        }
+
+        .header strong {
+            margin: auto;
+            font-size: 3vw;
+        }
+
+        .nev li {
+            width: 20%;
+            font-size: 2.3vw;
+            text-align: center;
+        }
+
+        .nev li:nth-child(2) {
+            border-bottom: 5px solid #91d4da;
+        }
+
+        /*不加入transition属性可以直接移动就显示下边界,不出现动画*/
+        .nev li:hover {
+            border-bottom: 5px solid #91d4da;
+        }
+
+        .logo li {
+            margin: auto;
+        }
+
+        /*设置li的margin为auto才能使的其内部元素居中显示*/
+
+        .logo img {
+            width: 100%;
+        }
+
+        /*设置图片width为100%以使其随着浏览器宽度变化而变化*/
+
+        .tag {
+            flex-flow: row wrap;
+            justify-content: space-around;
+            margin: 10px 45px;
+            border-bottom: 3px solid #eee;
+        }
+
+        .tag li {
+            margin: auto;
+            padding: 75px 20px 30px 20px;
+            background: url(images/task11-tag.png) 30% 0% no-repeat;
+            -webkit-background-size: 80%;
+            background-size: 80%;
+            font-weight: bold;
+        }
+
+        /*通过给li标签设置背景图片可以实现文字显示在图片下面并且成为一个整体*/
+
+        .column li {
+            margin: auto;
+            padding: 8%;
+            text-align: center;
+        }
+
+        .column li:nth-child(2) {
+            border-left: 3px solid #eee;
+            border-right: 3px solid #eee;
+        }
+
+        .column h5 {
+            margin-bottom: 20px;
+            font-size: 1.8vw;
+        }
+
+        .column h6 {
+            font-size: 1vw;
+        }
+
+        /*将图片宽度设置为100%使得浏览器宽度缩小不会使得部分内容不显示*/
+        .column img {
+            width: 100%;
+        }
+
+        .module {
+            border-top: 10px solid #eee;
+        }
+
+        /*加入align-items: center;防止图片随着宽度降低被变形*/
+        .module div {
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .module img {
+            width: 10%;
+        }
+
+        /*设置向左浮动使4个文本框变成两列,并且设置宽度和边框属性*/
+        .module li {
+            float: left;
+            width: 40%;
+            margin: 2% 0px 0px 6%;
+            padding: 1.5% 0px;
+            background-color: #F8F8F8;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /*.module ul:before,*/
+        /*.module ul:after {*/
+        /*content: "";*/
+        /*display: block;*/
+        /*clear: both;*/
+        /*}*/
+        /*不加清除也不会造成影响,暂时不明白是为什么*/
+
+        .module ul {
+            flex: 1;
+            padding-left: 0;
+        }
+
+        .module h4 {
+            margin: 0 3%;
+            border-bottom: 3px solid #eee;
+            font-size: 3vw;
+        }
+
+        .article {
+            border-top: 20px solid #eee;
+        }
+
+        .article li:first-child,
+        .article li:nth-child(2) {
+            border-bottom: 3px solid #eee;
+        }
+
+        .article h3 {
+            margin-top: 35px;
+            font-size: 22px;
+        }
+
+        /*span标签需要设置位置锁定才能进行属性调整*/
+        .article span {
+            display: block;
+            margin-top: 60px;
+            color: #C1C1C1;
+        }
+
+        /*将弹性布局元素设置为从上方往下排列,可以实现所需要的格式*/
+        .article li:last-child {
+            flex-direction: column;
+            margin-bottom: 30px;
+        }
+
+        .article li:last-child h3 {
+            margin-left: 35px;
+        }
+
+        .article li {
+            padding-left: 10px;
+        }
+
+        /*设置图片的flex-shrink: 0;可以使得其在浏览器宽度变小时不缩放*/
+        .article li:last-child img {
+            flex-shrink: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <a href="#">返回</a>
+    <strong>这是标题</strong>
+</div>
+<ul class="nev">
+    <li>导航</li>
+    <li>导航</li>
+    <li>导航</li>
+    <li>导航</li>
+    <li>导航</li>
+</ul>
+<ul class="logo">
+    <li>
+        <img src="images/task11-logo.jpg">
+    </li>
+</ul>
+<ul class="tag">
+    <li>标签</li>
+    <li>标签</li>
+    <li>标签</li>
+    <li>标签</li>
+    <li>标签</li>
+</ul>
+<ul class="column">
+    <li><img src="images/task11-column.jpg"><h5>分栏一</h5><h6>分栏小标题</h6></li>
+    <li><img src="images/task11-column.jpg"><h5>分栏二</h5><h6>分栏小标题</h6></li>
+    <li><img src="images/task11-column.jpg"><h5>分栏三</h5><h6>分栏小标题</h6></li>
+</ul>
+<div class="module">
+    <h4>模块一</h4>
+    <div>
+        <img src="images/task11-column.jpg" alt="column">
+        <ul>
+            <li>这是文案</li>
+            <li>这是文案</li>
+            <li>这是文案</li>
+            <li>这是文案</li>
+        </ul>
+    </div>
+</div>
+<div class="module">
+    <h4>模块二</h4>
+    <div>
+        <img src="images/task11-column.jpg" alt="column">
+        <ul>
+            <li>这是文案</li>
+            <li>这是文案</li>
+            <li>这是文案</li>
+            <li>这是文案</li>
+        </ul>
+    </div>
+</div>
+<ul class="article">
+    <li>
+        <img src="images/task11-column.jpg">
+        <div>
+            <h3>这是文字标题号为22的文章标题</h3>
+            <span>文章来源 6分钟前</span>
+        </div>
+    </li>
+    <li>
+        <img src="images/task11-column.jpg">
+        <div>
+            <h3>这是文字标题号为22的文章标题</h3>
+            <span>文章来源 6分钟前</span>
+        </div>
+    </li>
+    <li>
+
+        <div>
+            <h3>这是文章标题字号为22的文章标题</h3>
+            <img src="images/task11-column.jpg">
+            <img src="images/task11-column.jpg">
+            <img src="images/task11-column.jpg">
+        </div>
+        <span>文章来源 7分钟前</span>
+    </li>
+</ul>
+</body>
+</html>

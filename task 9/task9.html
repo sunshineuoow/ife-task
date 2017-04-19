@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task 9</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 16px;
+            font-family: "Microsoft Yahei";
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        li:hover{
+            cursor: pointer;
+        }
+        a {
+            text-decoration: none;
+        }
+        .fl{
+            float:left;
+        }
+        .header {
+            position: relative;
+            height: 50px;
+            background: #2189bf;
+        }
+
+        .header img[alt="logo"] {
+            position: absolute;
+            top: 8px;
+            left: 46px;
+            width: 35px;
+            height: 35px;
+            border-radius: 5px;
+        }
+
+        .header a {
+            position: absolute;
+            right: 50px;
+            bottom: 15px;
+            color: #fff;
+            font-size: .8rem;
+        }
+
+        /*input距离右边的边距被固定了,所以动画只能向左移动*/
+        .header input {
+            position: absolute;
+            width: 100px;
+            right: 269px;
+            padding: 5px;
+            bottom: 10px;
+            border: 0;
+            border-radius: 20px;
+            text-indent: 20px;
+            background: url(images/task09-header02.png) no-repeat white;
+            background-position: 5px 5px;
+            transition-property: width, border-radius;
+            transition-duration: 1s, 1s;
+        }
+
+        .header input:focus {
+            width: 200px;
+            border-radius: 0;
+            transition-property: width, border-radius;
+            transition-duration: 1s, 1s;
+        }
+        /*需要主体bottom:0; 才能使的背景颜色显示,因为主体内容有了高度*/
+        /*设置.main .content .aside的overflow属性为auto
+        就能使得下拉的时候标题栏不动,然后只有右边内容移动*/
+        /*overflow实现标题栏不动需要内容栏设置固定高度*/
+        .main {
+            position: absolute;
+            top: 50px;
+            /*height: 100%;*/
+            bottom: 0;
+            width: 100%;
+            overflow:auto;
+        }
+
+        /*侧栏部分*/
+        .aside {
+            position: absolute;
+            width: 200px;
+            height: 100%;
+            color: #697a8e;
+            background: #2a2e3d;
+            overflow:auto;
+        }
+
+        .aside-top {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .aside-top img {
+            width: 65px;
+            height: 65px;
+            border-radius: 65px;
+        }
+
+        .aside-top span {
+            display: block;
+        }
+
+        .aside-hint {
+            margin: 10px 0;
+            padding-left: 6px;
+        }
+
+        .aside-hint li {
+            display: inline-block;
+            padding: 0 26px;
+            transition: all .5s;
+        }
+
+        .aside-hint li:first-child {
+            border-right: 2px solid #383d4e;
+        }
+
+        .aside-hint li:hover,
+        .aside-icon li:hover {
+            background-color: #383d4e;
+            color: #fff;
+        }
+
+        .aside-icon {
+            margin: 0;
+            padding-left: 0;
+            font-size: .8rem;
+            text-indent: 32px;
+            cursor: pointer;
+        }
+
+        .aside-icon li {
+            padding: 6% 0;
+        }
+
+        .aside img[alt="aside-icon"] {
+            padding-right: 8px;
+        }
+
+        .aside-icon li:first-child {
+            color: #fff;
+            background: #383d4e;
+        }
+
+        .aside-icon li:nth-child(3),
+        .aside-icon li:nth-child(4) {
+            color: #fff;
+        }
+
+        .aside-icon li:nth-child(3) {
+            background: url(images/task09-aside11.png) 52px no-repeat #383d4e;
+        }
+
+        .aside-icon-dt {
+            background: url(images/task09-aside04.png) 52px no-repeat #383d4e;
+            text-indent: 66px;
+        }
+
+        /*如果上面的.aside-icon li:hover写背景颜色时写成了background: #383d4e;
+        会使得颜色覆盖背景图片,出现小箭头会消失的情况
+        所以应当写成background-color: #383d4e;*/
+
+        .aside-icon-dt:hover {
+            background: url(images/task09-aside11.png) 52px no-repeat;
+        }
+
+        .aside-icon-dd {
+            background: #383d4e;
+            text-indent: 92px;
+        }
+
+        /*主体部分*/
+        .content{
+            position: absolute;
+            height: 100%;
+            /*width: 85%;*/
+            margin-left: 200px;
+            background-color: #eeeeed;
+            overflow:auto;
+        }
+        .con-header{
+            padding: 10px;
+            background-color: #fff;
+            font-size: .9rem;
+            color: #b6b5b5;
+            text-indent: 20px;
+        }
+        .con-header span:last-child{
+            color: #2189bf;
+        }
+        .con-header span:hover{
+            color: #2189bf;
+            cursor: pointer;
+        }
+        .part1,
+        .part2 li,
+        .part3 li,
+        .part4,
+        .part5,
+        .part6,
+        .part7{
+            background-color: #fff;
+            box-shadow: 10px 10px 5px #888;
+        }
+        .part1 {
+            margin: 2rem 1rem;
+            padding: 2rem 4rem;
+        }
+        .part1 {
+
+        }
+        .part1-box {
+            display: inline-block;
+            width: 165px;
+            height: 55px;
+        }
+        .part1 label{
+            color: #b6b5b5;
+            font-size: .8rem;
+        }
+        .part1 select,
+        .part1 input{
+            margin: 10px 18px 0 0;
+            font-size: .8rem;
+        }
+        .part1-box select[id="box"]{
+            width: 80px;
+            margin-top: 7px;
+        }
+        .part1-box:first-child{
+            width: 160px;
+            vertical-align: bottom;
+        }
+        .part1-box:nth-child(2){
+            background: url(images/task09-mainpart01-01.png) no-repeat 135px 17px;
+        }
+        .part1-box select[id="buyer"],
+        .part1-box select[id="seller"],
+        .part1-mid select[id="people"] {
+            width: 100px;
+        }
+        .part1-mid {
+            width: 370px;
+            text-align: right;
+        }
+        .part1 input:last-child{
+            display: inline-block;
+            margin-left: 2rem;
+            margin-bottom: 15px;
+            padding: 2px 15px;
+            border: 0;
+            line-height: 24px;
+            vertical-align: top;
+            color: white;
+            background-color: #388ac1;
+        }
+
+        .part2 {
+            display: flex;
+            margin: 2rem 1rem;
+        }
+        .part2 li{
+            padding: 1rem;
+        }
+        .part2-img{
+            flex-grow: 1;
+        }
+        .part2-l {
+            margin: 0 1rem;
+            text-align: center;
+            color: #ababab;
+            flex-grow: 2;
+        }
+        /*.part2 img:first-child{*/
+        /*margin: 1rem 0 0;*/
+        /*}*/
+        .part2-l span{
+            display: inline-block;
+        }
+        .part2-time{
+            color: black;
+            font-size: .9rem;
+        }
+        .part2-price{
+            color: #ed6300;
+            font-size: 1.3rem;
+        }
+        .part2 li:nth-child(2){
+            border-top: 5px solid #4388c9;
+        }
+        .part2-search{
+            display:flex;
+            align-items: center;
+            flex-grow: 3;
+        }
+        .part2-search a{
+            display: flex;
+            color: #697a8e;
+            align-items: center;
+        }
+
+        .part3 {
+            display: flex;
+            flex-direction: column;
+            margin: 2rem 1rem;
+        }
+        .part3 ul{
+            display: flex;
+            justify-content: space-between;
+        }
+        .part3 li{
+            display: inline-block;
+            width: 180px;
+            padding: 10px;
+            font-size: .9rem;
+        }
+        .part3-title{
+            margin-bottom: 10px;
+        }
+        .part3 span{
+            color: #acacab;
+        }
+        .part3 li:first-child{
+            border-left: 5px solid #43b29e;
+            background: url(images/task09-mainpart03-01.png) no-repeat #fff 100px;
+        }
+        .part3 li:nth-child(2){
+             border-left: 5px solid #388ac1;
+             background: url(images/task09-mainpart03-02.png) no-repeat #fff 100px;
+        }
+        .part3 li:nth-child(3){
+            border-left: 5px solid #d04a36;
+            background: url(images/task09-mainpart03-03.png) no-repeat #fff 100px;
+        }
+        .part3 li:last-child{
+            border-left: 5px solid #e2cd46;
+            background: url(images/task09-mainpart03-04.png) no-repeat #fff 100px;
+        }
+
+        .part4 {
+            width: 600px;
+            margin: 0 0 2rem 1rem;
+        }
+        .part4-title,
+        .part5-title,
+        .part6-title,
+        .part7-title{
+            padding: 15px;
+            color: #b0afbe;
+            background-color: #f4f5f7;
+        }
+        .part4-project{
+            margin-left: 59px;
+            padding-top: 15px;
+        }
+        .part4-project li {
+            display: inline-block;
+            padding: 6px 19.3px;
+            background-color: #d6d6de;
+            color: #778695;
+            font-size: 16px;
+        }
+        .part4-project a {
+            color: #778695;
+        }
+        .part4-detail {
+            margin: 0 0 20px 59px;
+        }
+        .part4 table{
+            display: inline-block;
+            padding: 25.5px;
+            border: 1px solid #b0afaf;
+            text-align: center;
+        }
+        .part4-detail td{
+            padding: 2px 6px;
+            border: 1px solid #000;
+            font-size: 12px;
+        }
+        .part4-project li:target{
+            border: 1px solid #b0afaf;
+            border-bottom: 0;
+            background-color: #fff;
+        }
+
+        .part5 {
+            margin: 0 0 2rem 1rem;
+        }
+        .part5 ul{
+            display: inline-block;
+            margin: 10px 0 68px 35px;
+            font-size: .85rem;
+        }
+        .part5 span{
+            display: inline-block;
+            color: #c6c6c6;
+        }
+        .part5-ul-li {
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .part5-price,
+        .part5-manager{
+            display: inline-block;
+        }
+        .part5-price {
+            width: 40%;
+            border-right: 1px solid #eee;
+        }
+        .part5-manager {
+            width: 40%;
+        }
+        .part5 li:last-child{
+            margin-bottom: 27px;
+        }
+        .part5-bottom {
+            padding: .88rem;
+            font-size: .85rem;
+            border-top: 1px solid #eee;
+        }
+        .part5-search {
+            margin-left: 170px;
+            padding: 2px 15px;
+            line-height: 1.5rem;
+            color: #fff;
+            background-color: #388ac1;
+            transition: all 1s;
+        }
+        .part5-search:hover{
+            border:none;
+            border-radius: 20px;
+            background-color: #fff;
+            color: #388ac1;
+            transition :all 1s;
+        }
+        .part6 {
+            width: 360px;
+            margin: 0 0 2rem 1rem;
+        }
+        .part6 li{
+            display:inline-block;
+        }
+        .part6-date-header{
+            margin: .8rem;
+            padding-bottom: .8rem;
+            font-size: .8rem;
+            border-bottom: 1px solid #a8cfec;
+        }
+        .part6-date-header span{
+            margin: 0 4px;
+            padding: 3px 13px;
+            border: 1px solid #eee;
+            cursor:pointer;
+            background: url(images/task09-mainpart06-01.png) no-repeat #fff  right center;
+        }
+        .part6-date-middle {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ececec;
+            font-size: .95rem;
+            text-align: center;
+        }
+        .part6-date-middle li{
+            display: inline-block;
+            padding: 0 13px;
+        }
+        .part6-date {
+            margin-left: 1rem;
+        }
+        .part6-date li{
+            float:left;
+            height: 2rem;
+            width: 46px;
+            margin: 2px 0;
+            font-size: .7rem;
+            text-align: center;
+        }
+        .part6-date .circle{
+            border: 1px solid #f5c11d;
+            box-sizing: border-box;
+        }
+        .part6-date .festival,
+        .part6-date .weekends {
+            color: #ce343c;
+        }
+
+        .part7 {
+            margin: 0 0 2rem 1rem;
+            width: 600px;
+        }
+        .part7 table{
+            margin: 22px auto;
+            text-align: center;
+        }
+        .part7 th,
+        .part7 td{
+            padding: 0 31px;
+            border: 1px solid #eee;
+        }
+        .part7-img{
+            display:inline-block;
+            float: right;
+            width: 146px;
+            height: 5px;
+            margin: 10px 0 0 19px;
+            background-color: #eee;
+        }
+        .part7 .hot1{
+            display: block;
+            height: 100%;
+            width: 80%;
+            background-color: #ee6e53;
+        }
+        .part7 .hot2{
+            display: block;
+            height: 100%;
+            width: 76%;
+            background-color: #ef8150;
+        }
+        .part7 .hot3{
+            display: block;
+            height: 100%;
+            width: 60%;
+            background-color: #f19e4e;
+        }
+        .part7 .hot4{
+            display: block;
+            height: 100%;
+            width: 50%;
+            background-color: #7fcbef;
+        }
+        .part7 .hot5{
+            display: block;
+            height: 100%;
+            width: 40%;
+            background-color: #7fcbef;
+        }
+        .part7 .hot6{
+            display: block;
+            height: 100%;
+            width: 36%;
+            background-color: #7fcbef;
+        }
+        .part7 .hot7{
+            display: block;
+            height: 100%;
+            width: 30%;
+            background-color: #7fcbef;
+        }
+        .part7 .hot8{
+            display: block;
+            height: 100%;
+            width: 28%;
+            background-color: #7fcbef;
+        }
+        .part7 .hot9{
+            display: block;
+            height: 100%;
+            width: 20%;
+            background-color: #7fcbef;
+        }
+        .part7 .hot10{
+            display: block;
+            height: 100%;
+            width: 10%;
+            background-color: #7fcbef;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+        <img src="images/logo.png" alt="logo">
+        <input type="text" name="search">
+        <a href="#"><img src="images/task09-header01.png">登录</a>
+    </div>
+<div class="main">
+    <div class="aside">
+        <div class="aside-top">
+            <img src="images/1.jpg" alt="photo">
+            <span>XJW</span>
+        </div>
+        <div class="aside-hint">
+            <ul>
+                <li>
+                    <span>666</span><br>
+                    <span>收藏</span>
+                </li>
+                <li>
+                    <span>233</span><br>
+                    <span>粉丝</span>
+                </li>
+            </ul>
+        </div>
+        <ul class="aside-icon">
+            <li>
+                <img src="images/task09-aside09.png" alt="aside-icon">
+                个人报表
+                <!--<a href="#">个人报表</a>-->
+            </li>
+            <li class="aside-icon-dt">
+                <img src="images/task09-aside01.png" alt="aside-icon">
+                文件夹一
+            </li>
+            <li class="aside-icon-dt">
+                <img src="images/task09-aside02.png" alt="aside-icon">
+                文件夹二
+            </li>
+            <li class="aside-icon-dd">
+                <img src="images/task09-aside05.png" alt="aside-icon">
+                文档一
+            </li>
+            <li class="aside-icon-dd">
+                <img src="images/task09-aside06.png" alt="aside-icon">
+                文档二
+            </li>
+            <li class="aside-icon-dt">
+                <img src="images/task09-aside01.png" alt="aside-icon">
+                文件夹三
+            </li>
+            <li>
+                <img src="images/task09-aside07.png" alt="aside-icon">
+                个人收藏
+            </li>
+            <li>
+                <img src="images/task09-aside10.png" alt="aside-icon">
+                我的分享
+            </li>
+            <li>
+                <img src="images/task09-aside07.png" alt="aside-icon">
+                图库
+            </li>
+            <li>
+                <img src="images/task09-aside07.png" alt="aside-icon">
+                成长记录
+            </li>
+            <li>
+                <img src="images/task09-aside03.png" alt="aside-icon">
+                账户信息
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="con-header">
+            <span>c站</span>/<span>个人报表</span>/<span>文件一</span>/<span>文档一</span>
+        </div>
+        <div class="part1">
+            <div class="part1-box">
+                    <label for="box">查询项</label>
+                    <select id="box">
+                        <option>第一项</option>
+                        <option>第二项</option>
+                        <option>第三项</option>
+                    </select>
+                </div>
+            <div class="part1-box">
+                    <label for="buyer">买方</label>
+                    <select id="buyer">
+                        <option>小A</option>
+                        <option>小王</option>
+                        <option>小八</option>
+                    </select>
+                    <label for="seller">卖方</label>
+                    <select id="seller">
+                        <option>小C</option>
+                        <option>小三</option>
+                        <option>小四</option>
+                    </select>
+                </div>
+            <div class="part1-box part1-mid">
+                <label for="date">日期</label>
+                <input type="text" name="date" id="date" value="2017-03-24">
+                <label for="time">总耗时</label>
+                <select id="time">
+                        <option>8天</option>
+                        <option>12天</option>
+                        <option>14天</option>
+                    </select>
+                <!--没有办法将元素切换到下一行时,使用<br>标签换行解决-->
+                <br>
+                <label for="people">人数</label>
+                <select id="people">
+                        <option>10人</option>
+                        <option>12人</option>
+                        <option>14人</option>
+                    </select>
+                <label for="deal">成交项</label>
+                <select id="deal">
+                        <option>10人</option>
+                        <option>12人</option>
+                        <option>14人</option>
+                    </select>
+                <br>
+            </div>
+            <input type="button" value="搜索" name="search">
+        </div>
+        <ul class="part2">
+            <li class="part2-img">
+                <img src="images/task09-mainpart02-01.png">
+            </li>
+            <li class="part2-l">
+                <span class="part2-time">
+                    10:00 am
+                </span>
+                <br>
+                &yen;
+                <span class="part2-price">1200</span>
+            </li>
+            <li class="part2-l">
+                <span class="part2-time">
+                    11:00 am
+                </span>
+                <br>
+                &yen;
+                <span class="part2-price">1200</span>
+            </li>
+            <li class="part2-l">
+                <span class="part2-time">
+                    12:00 am
+                </span>
+                <br>
+                &yen;
+                <span class="part2-price">1200</span>
+            </li>
+            <li class="part2-l">
+                <span class="part2-time">
+                    01:00 pm
+                </span>
+                <br>
+                &yen;
+                <span class="part2-price">1200</span>
+            </li>
+            <li class="part2-l">
+                <span class="part2-time">
+                    02:00 pm
+                </span>
+                <br>
+                &yen;
+                <span class="part2-price">1200</span>
+            </li>
+            <li class="part2-l">
+                <span class="part2-time">
+                    03:00 pm
+                </span>
+                <br>
+                &yen;
+                <span class="part2-price">1200</span>
+            </li>
+            <li class="part2-img">
+                <img src="images/task09-mainpart02-02.png">
+            </li>
+            <li class="part2-search">
+                <a href="#">
+                    <img src="images/task09-mainpart02-03.png">
+                    <span>历史查询</span>
+                </a>
+            </li>
+        </ul>
+        <div class="part3">
+            <p class="part3-title">2016年4月份统计</p>
+            <ul class="part3-ul">
+                <li>
+                    <p>133311</p>
+                    <span>成交量</span>
+                </li>
+                <li>
+                    <p>133311</p>
+                    <span>成交量</span>
+                </li>
+                <li>
+                    <p>133311</p>
+                    <span>成交量</span>
+                </li>
+                <li>
+                    <p>133311</p>
+                    <span>成交量</span>
+                </li>
+            </ul>
+        </div>
+        <div class="part4 fl">
+            <p class="part4-title">第一组项目</p>
+            <ul class="part4-project">
+                <li id="project1"><a href="#project1">项目一</a></li>
+                <li id="project2"><a href="#project2">项目二</a></li>
+                <li id="project3"><a href="#project3">项目三</a></li>
+                <li id="project4"><a href="#project4">项目四</a></li>
+                <li id="project5"><a href="#project5">项目五</a></li>
+            </ul>
+            <table class="part4-detail">
+                <tr>
+                    <td>购买材料一</td>
+                    <td>购买材料一</td>
+                    <td>购买材料一</td>
+                    <td>购买材料一</td>
+                </tr>
+                <tr>
+                    <td>购买材料二</td>
+                    <td>购买材料二</td>
+                    <td>购买材料二</td>
+                    <td>购买材料二</td>
+                </tr>
+                <tr>
+                    <td>购买材料四</td>
+                    <td>购买材料四</td>
+                    <td>购买材料四</td>
+                    <td>购买材料四</td>
+                </tr>
+                <tr>
+                    <td>购买材料十二</td>
+                    <td>购买材料十二</td>
+                    <td>购买材料十二</td>
+                    <td>购买材料十二</td>
+                </tr>
+                <tr>
+                    <td>购买材料二十六</td>
+                    <td>购买材料二十六</td>
+                    <td>购买材料二十六</td>
+                    <td>购买材料二十六</td>
+                </tr>
+                <tr>
+                    <td>购买材料三十</td>
+                    <td>购买材料三十</td>
+                    <td>购买材料三十</td>
+                    <td>购买材料三十</td>
+                </tr>
+            </table>
+        </div>
+        <div class="part5 fl">
+            <p class="part5-title">第二组项目</p>
+            <ul class="part5-ul">
+                <li>
+                    <span>标题</span>
+                    <p>项目报表三</p>
+                </li>
+                <li class="part5-ul-li">
+                    <p class="part5-price">
+                        <span>价格</span>
+                        <br>
+                        &yen;158
+                    </p>
+                    <p class="part5-manager">
+                        <span>负责人</span>
+                        <br>
+                        小A
+                    </p>
+                </li>
+                <li>
+                    <span>详细描述</span>
+                    <p>该项目目前的负责人是....</p>
+                </li>
+            </ul>
+            <div class="part5-bottom">
+                <input type="checkbox" checked="checked">
+                <span>遵守保密协议</span>
+                <input type="button" value="搜索" class="part5-search">
+            </div>
+        </div>
+        <div class="part6 fl">
+            <div class="part6-title">
+                <p>日历</p>
+            </div>
+            <div class="part6-date-header">
+                <span>2016</span>
+                <span>4月</span>
+                <span>标注日期</span>
+                <span>返回今天</span>
+            </div>
+            <ul class="part6-date-middle">
+                <li>一</li>
+                <li>二</li>
+                <li>三</li>
+                <li>四</li>
+                <li>五</li>
+                <li>六</li>
+                <li>日</li>
+            </ul>
+            <ul class="part6-date">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li>1<br><span class="festival">愚人节</span></li>
+                <li><span class="weekends">2</span><br>廿五</li>
+                <li><span class="weekends">3</span><br>廿六</li>
+                <li>4<br><span>廿七</span></li>
+                <li>5<br><span class="festival">清明</span></li>
+                <li>6<br><span>廿九</span></li>
+                <li>7<br><span>三月</span></li>
+                <li>8<br><span>初二</span></li>
+                <li><span class="weekends">9</span><br>初三</li>
+                <li class="circle"><span class="weekends">10</span><br>初四</li>
+                <li>11<br><span class="weekends">初五</span></li>
+                <li>12<br><span>初六</span></li>
+                <li class="circle">13<br><span>初七</span></li>
+                <li>14<br><span>初八</span></li>
+                <li>15<br><span>初九</span></li>
+                <li><span class="weekends">16<br></span>初十</li>
+                <li><span class="weekends">17<br></span>十一</li>
+                <li>18<br><span>十二</span></li>
+                <li>19<br><span>十三</span></li>
+                <li class="circle">20<br><span>十四</span></li>
+                <li>21<br><span>十五</span></li>
+                <li>22<br><span>十六</span></li>
+                <li><span class="weekends">23</span><br>十七</li>
+                <li><span class="weekends">24</span><br>十八</li>
+                <li>25<br><span>十九</span></li>
+                <li>26<br><span>廿十</span></li>
+                <li>27<br><span>廿一</span></li>
+                <li>28<br><span>廿二</span></li>
+                <li>29<br><span>廿三</span></li>
+                <li><span class="weekends">30</span><br>廿四</li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="part7 fl">
+            <div class="part7-title">
+                汽车行业品牌榜
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th>品牌</th>
+                        <th>搜索指数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>大众</td>
+                        <td>4231232<p class="part7-img"><span class="hot1"></span></p></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>丰田</td>
+                        <td>293073333<p class="part7-img"><span class="hot2"></span></p></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>奥迪</td>
+                        <td>231390704<p class="part7-img"><span class="hot3"></span></p></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>本田</td>
+                        <td>22885564<p class="part7-img"><span class="hot4"></span></p></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>福特</td>
+                        <td>22324792<p class="part7-img"><span class="hot5"></span></p></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>宝马</td>
+                        <td>21444077<p class="part7-img"><span class="hot6"></span></p></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>现代</td>
+                        <td>20114969<p class="part7-img"><span class="hot7"></span></p></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>起亚</td>
+                        <td>19251680<p class="part7-img"><span class="hot8"></span></p></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>奔驰</td>
+                        <td>19172837<p class="part7-img"><span class="hot9"></span></p></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>别克</td>
+                        <td>18544027<p class="part7-img"><span class="hot10"></span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

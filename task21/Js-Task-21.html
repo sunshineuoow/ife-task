@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 09</title>
+    <style>
+        body{
+            width: 50%;
+            margin: 0 auto;
+        }
+        div{
+            display: flex;
+            flex-direction:column;
+        }
+        ul{
+            display: flex;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            padding: 10px 0;
+
+        }
+        li{
+            display: inline-block;
+            margin: 2px;
+            padding: 7px;
+            border-radius: 15px;
+            color: #fff;
+            background-color: rgba(255,0,0,.5);
+            transition: all 1s;
+            cursor: pointer;
+        }
+        input{
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #ff0000;
+            background-color: #fff;
+        }
+        input:hover{
+            background-color: rgba(255,0,0,.5);
+            transition: all 1s;
+        }
+        textarea{
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="tag">Tag:</label>
+        <input type="text" name="tag" id="tag" placeholder="回车/逗号/空格均可完成创建">
+        <ul id="tag_content"></ul>
+    </div>
+    <div>
+        <textarea rows="5" cols="100" placeholder="批量输入多个内容，格式可以为数字、中文、英文等，可以通过用回车，逗号（全角半角均可），顿号，空格(全角半角)、Tab等符号作为不同内容的间隔" id="text_interest"></textarea>
+        <input type="button" value="确认兴趣爱好" id="confirmBtn">
+        <ul id="area_content"></ul>
+        <input type="button" value="重置" id="resetBtn">
+    </div>
+<script type="text/javascript" src="task.js"></script>
+</body>
+</html>

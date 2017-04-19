@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review 3</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft Yahei";
+        }
+
+        /*将主体设置为position:relative;使得之后的定位以主体盒子为基础*/
+        /*relative属性会为元素留住之前存在的位置*/
+        .main {
+            position: relative;
+            margin: 20px;
+            padding: 20px;
+            background-color: #eeeeee;
+        }
+
+        .left,
+        .middle,
+        .right {
+            padding: 20px;
+            border: 1px solid #999999;
+            background-color: #fff;
+        }
+
+        /*将左边盒子设置为弹性盒子,可以使得img和span变成两个盒子同行排列*/
+        .left {
+            position: absolute;
+            display: flex;
+            width: 160px;
+        }
+
+        .left span {
+            padding-left: 20px;
+            vertical-align: top;
+        }
+
+        /*将左右盒子设置为position:absolute;可以将其相对于主体定位*/
+        /*absolute不会为元素预留空间,刚设置好之后middle部分会充满整个主体盒子*/
+        .right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+            transition: all .5s;
+        }
+
+        /*transform: rotate3d(x,y,z,angle)可以控制图片3d旋转*/
+        img:hover {
+            transform: rotate3d(20, 20, 20, 360deg);
+            transition: all .5s;
+        }
+
+        .right img {
+            margin: 10px 0;
+        }
+
+        .middle {
+            margin: 0 160px 0 240px;
+            padding-bottom: 40px;
+        }
+
+        .middle .indent {
+            text-indent: .5em;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="left">
+        <img src="images/logo.png">
+        <span>MADE BY XJW</span>
+    </div>
+    <div class="middle">
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+        <p class="indent">
+            我们来自不同的省份，纵跨小半个中国；我们来自不同的大学，有二本院也有985、211的重点大学；我们各处不同的阶段，有大三狗也有研究生。但我们有着相同的目标，同样的理想。正是这份信念让我们有缘聚在一起，一起通过百度IFE学院锻炼自己的水平。</p>
+        <p>关于我们的团队"TEAM CM"(code matters)</p>
+    </div>
+    <div class="right">
+        <img src="images/1.jpg">
+        <img src="images/2.jpg">
+        <img src="images/3.jpg">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 08</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            padding: 10px;
+        }
+        textarea{
+            width: 100%;
+        }
+        input{
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #fff;
+            border: 1px solid #ff0000;
+            transition: all .5s;
+            cursor: pointer;
+        }
+        input:hover{
+            background-color: rgba(255, 0, 0, 0.7);
+            transition: all .5s;
+        }
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            padding-left: 0;
+        }
+        ul li{
+            display: inline-block;
+            margin: 2px;
+            padding: 7px;
+            border-radius: 15px;
+            background-color: rgba(255, 0, 0, 0.5);
+            color: #fff;
+            cursor: pointer;
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <textarea placeholder="批量输入多个内容，格式可以为数字、中文、英文等，可以通过用回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔。" id="inputText" cols="100" rows="5"></textarea>
+        <input type="button" value="左侧入" id="inputLeftIn">
+        <input type="button" value="右侧入" id="inputRightIn">
+        <input type="button" value="左侧出" id="inputLeftOut">
+        <input type="button" value="右侧出" id="inputRightOut">
+        <input type="text" placeholder="输入想查询的标签名" id="inputSearch">
+        <input type="button" value="查询" id="search">
+        <input type="button" value="重置" id="reset">
+    </div>
+    <ul id="content"></ul>
+    <script type="text/javascript" src="task.js"></script>
+</body>
+</html>
