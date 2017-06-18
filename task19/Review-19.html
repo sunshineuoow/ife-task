@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review-19</title>
+    <style>
+       body{
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+        ul{
+            display: flex;
+            align-items: flex-end;
+            padding-left: 0;
+        }
+        ul li{
+            display: inline-block;
+            width: 15px;
+            margin: 0 1px;
+            line-height: 50px;
+            background-color: #f00;
+            text-indent: 20px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        input{
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="inputNum" placeholder="请输入10-100的数字">
+    <input type="button" id="leftIn" value="左侧入">
+    <input type="button" id="rightIn" value="右侧入">
+    <input type="button" id="leftOut" value="左侧出">
+    <input type="button" id="rightOut" value="右侧出">
+    <input type="button" id="random" value="随机生成60个数字">
+    <input type="text" id="sortSpeed" placeholder="排序速度，默认50">
+    <input type="button" id="sort" value="排序">
+    <input type="button" id="refresh" value="刷新页面">
+</div>
+<ul id="content"></ul>
+<p>step1、自主输入60个数字或者点"随机60个数字"</p>
+<p>step2、填写排序速度，默认50（可选）</p>
+<p>step3、点击“排序”按钮</p>
+<p>注：重来请按“刷新页面”</p>
+<script src="js/review.js"></script>
+</body>
+</html>

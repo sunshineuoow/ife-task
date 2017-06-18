@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review-18</title>
+    <style>
+        ul{
+            padding-left: 0;
+        }
+        ul li{
+            list-style: none;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            padding: 10px;
+            margin-left: 10px;
+            line-height: 50px;
+            color: #fff;
+            background-color: #f00;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" id="input_num" name="number" placeholder="请输入数字">
+        <button>左侧入</button>
+        <button>右侧入</button>
+        <button>左侧出</button>
+        <button>右侧出</button>
+    </div>
+<ul id="content"></ul>
+    <script>
+        var inputNum = document.getElementById('input_num'),
+            content = document.getElementById('content'),
+            btns = document.getElementsByTagName('button');
+        inputNum.addEventListener('blur',function(){
+            if(!inputNum.value.match(/^\d*$/)){
+                alert('请输入数字!');
+                inputNum.value = '';
+            }
+        },false)
+
+//        左进
+        btns[0].addEventListener('click',function(){
+            if(inputNum.value == '' || inputNum.value == null){
+                return false;
+            }
+            var newItem = document.createElement('li');
+            newItem.innerHTML = inputNum.value;
+            content.insertBefore(newItem,content.childNodes[0]);
+        })
+
+//        右进
+        btns[1].addEventListener('click',function(){
+            if(inputNum.value == '' || inputNum.value == null){
+                return false;
+            }
+            var newItem = document.createElement('li');
+            newItem.innerHTML = inputNum.value;
+            content.appendChild(newItem);
+        },false)
+
+//        左出
+        btns[2].addEventListener('click',function(){
+            var item = content.childNodes[0];
+            alert('移除节点' + item.innerHTML);
+            content.removeChild(item);
+        },false)
+
+//        右出
+        btns[3].addEventListener('click',function(){
+            var item = content.lastChild;
+            alert('移除节点' + item.innerHTML);
+            content.removeChild(item);
+        },false)
+
+//        点击移除
+        content.addEventListener('click',function(e){
+            e = e || window.event;
+            var target = e.target || e.srcElement;
+            if(target.nodeName.toLowerCase() == 'li'){
+                content.removeChild(target);
+            }
+        },false)
+    </script>
+</body>
+</html>

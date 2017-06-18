@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review-13</title>
+</head>
+<body>
+    <label for="air">请输入北京今天空气质量：</label>
+    <input type="text" name="air" id="air">
+    <button id="btn">确认填写</button>
+    <p>您输入的值是：<span id="aqi-input">尚无录入</span></p>
+<script>
+    (function(){
+        function confirm(){
+            var info = document.getElementById('air').value;
+            document.getElementById('aqi-input').innerHTML = info;
+        }
+        document.getElementById('btn').addEventListener('click',confirm,false);
+    })()
+</script>
+</body>
+</html>

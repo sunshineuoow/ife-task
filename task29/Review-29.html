@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Review-29</title>
+    <style>
+    body {
+        font-family: "Microsoft Yahei";
+    }
+    
+    #confirm {
+        padding: 10px 20px;
+        border: 1px solid #2f79ba;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #2f79ba;
+        cursor: pointer;
+    }
+    
+    #inputText {
+        padding: 7px;
+    }
+    
+    #hint {
+        margin-left: 35px;
+        color: #bbb;
+        font-size: .8rem;
+    }
+    </style>
+</head>
+
+<body>
+    <label for="inputText">名称</label>
+    <input type="text" id='inputText' name='text'>
+    <input type="button" id='confirm' value='验证'>
+    <p id="hint">必填，长度为4~16个字符</p>
+    <script>
+    var text = document.getElementById('inputText'),
+        hint = document.getElementById('hint');
+
+    function isRight() {
+        if (text.value == '') {
+            hint.innerHTML = '姓名不能为空';
+            hint.style.color = '#f00';
+            text.style.border = '2px solid #f00';
+            console.log(1);
+            return;
+        } else if (getLength(text.value) < 4 || getLength(text.value) > 16) {
+            hint.innerHTML = '长度只能是4-16个字符';
+            hint.style.color = '#f00';
+            text.style.border = '2px solid #f00';
+            console.log(2);
+            return;
+        } else {
+            hint.innerHTML = '名称格式正确';
+            hint.style.color = '#0f0';
+            text.style.border = '2px solid #0f0';
+            console.log(3);
+            return text.value;
+        }
+
+    };
+
+    function getLength(str) {
+        var countLen = 0;
+        for (var i = 0, len = str.length; i < len; i++) {
+            var charCode = str.charCodeAt(i);
+            if (charCode >= 0 && charCode <= 128) {
+                countLen++;
+            } else {
+                countLen += 2;
+            }
+        }
+        return countLen;
+    }
+    document.getElementById('confirm').addEventListener('click', isRight, false);
+    </script>
+</body>
+
+</html>

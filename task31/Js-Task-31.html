@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 19</title>
+    <style>
+        #off_group{
+            display: none;
+        }
+        #schoolList{
+            display: inline-block;
+        }
+        #beijing{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="radio" name="school" id="on_school" checked="checked">
+    <label for="on_school">在校生</label>
+    <input type="radio" name="school" id="off_school">
+    <label for="off_school">毕业生</label>
+</div>
+<div>
+    <div id="on_group">
+        <label for="city">学校</label>
+        <select id="city">
+            <!--<option value="hu-nan">湖南</option>-->
+            <!--<option value="beijing">北京</option>-->
+            <option>湖南</option>
+            <option>北京</option>
+            </select>
+    <div id="schoolList">
+        <!--<select id="hu-nan">-->
+            <!--<option>湖南人文科技学院</option>-->
+            <!--<option>怀化学院</option>-->
+        <!--</select>-->
+        <!--<select id="beijing">-->
+            <!--<option>清华大学</option>-->
+            <!--<option>北京大学</option>-->
+            <!--<option>中国人民大学</option>-->
+            <!--<option>北京邮电大学</option>-->
+        <!--</select>-->
+        <select id="school">
+            <option>怀化中学</option>
+            <option>湖南人文学院</option>
+        </select>
+    </div>
+    </div>
+    <div id="off_group">
+        <label for="workplace">就业单位</label>
+        <select id="workplace">
+            <option>百度</option>
+            <option>阿里</option>
+            <option>京东</option>
+        </select>
+    </div>
+</div>
+<script>
+    var onSchool = document.getElementById("on_school"),
+        offSchool = document.getElementById("off_school"),
+        onGroup = document.getElementById("on_group"),
+        offGroup = document.getElementById("off_group");
+    var city_school ={
+        "湖南": ["怀化中学","湖南人文学院"],
+        "北京":["清华大学","北京大学","中国人民大学","北京邮电大学"]
+    }
+   function studentCheck(){
+       var newItem = this.getAttribute("id");
+       if(newItem == "on_school"){
+           onGroup.style.display = "block";
+           offGroup.style.display = "none";
+       }
+       else{
+           onGroup.style.display = "none";
+           offGroup.style.display = "block";
+       }
+   }
+//   使用对象书写选项改变关联,方便以后传输数据
+    function citySchool(){
+       var city = document.getElementById("city").value,
+           school = document.getElementById("school");
+       school.options.length = 0;
+       for(var x in city_school){
+           if(x == city){
+               var cityLen = city_school[x].length;
+               for(var i = 0; i < cityLen; i++){
+                   var item = new Option(city_school[x][i],city_school[x][i]);
+                   school.options.add(item);
+               }
+           }
+       }
+    }
+//   function schoolShow(){
+//        var index = this.selectedIndex;
+//        var city_name = this.options[index].value;
+//        for(var i = 0, j = document.getElementById('schoolList').getElementsByTagName("select"); i < j.length; i++ ){
+//            j[i].style.display = "none";
+//        }
+//        document.getElementById(city_name).style.display = "block";
+//   }
+
+   onSchool.addEventListener("change",studentCheck,false);
+   offSchool.addEventListener("change",studentCheck,false);
+//   document.getElementById("city").addEventListener("change",schoolShow,false);
+   document.getElementById("city").addEventListener("change",citySchool,false);
+</script>
+</body>
+</html>

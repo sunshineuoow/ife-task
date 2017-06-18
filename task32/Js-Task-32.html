@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 20</title>
+    <style>
+        .factory {
+            margin: 40px 20px;
+            border: 5px solid gray;
+        }
+        div{
+            margin: auto;
+        }
+        p{
+            font: .8rem "Microsoft Yahei";
+            color: #888;
+            display: inline-block;
+        }
+        input[class="fail"]{
+            border: 2px solid #f00;
+        }
+        input[class="success"]{
+            border: 2px solid #0f0;
+        }
+        input[class="rules"]{
+            border: 1px solid #888;
+        }
+        p[class="fail"]{
+            color: #f00;
+        }
+        p[class="success"]{
+            color: #0f0;
+        }
+        p[class="rules"]{
+            color: #888
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" name="lol" id="account" checked="checked" disabled="true">
+    <label for="account">账号</label>
+    <input type="checkbox" name="lol" id="password" checked="checked" disabled="true">
+    <label for="password">密码</label>
+    <input type="checkbox" name="lol" id="confirm_password" checked="checked" disabled="true">
+    <label for="confirm_password">确认密码</label>
+    <input type="checkbox" name="lol" id="mail">
+    <label for="mail">邮箱</label>
+    <input type="checkbox" name="lol" id="phone">
+    <label for="phone">手机号码</label>
+    <input type="button" name="lol" id="create" value="创建表单">
+    <input type="button" name="lol" id="reset" value="重置">
+    <form id="form"></form>
+<script type="text/javascript" src="js/task.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 23</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft Yahei";
+        }
+        table{
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        td{
+            width: 50px;
+            height: 50px;
+            border: 1px solid #eee;
+            box-sizing: border-box;
+            font-weight: bold;
+            text-align: center;
+        }
+        ul li{
+            list-style: none;
+        }
+        .wrapper{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .table{
+            flex-shrink: 0;
+        }
+        .robot-box{
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            width: 50px;
+            height: 50px;
+            background: url(images/box.jpg) no-repeat 40% 40%;
+            transition: all 1s;
+        }
+        .command-part{
+            margin: 10px;
+        }
+        .command-part-display{
+            display: flex;
+            overflow: hidden;
+        }
+        .command-part-button{
+            display: flex;
+            justify-content: space-around;
+        }
+        .command-part-display-count{
+            background-color: #2c3e50;
+            color:#fff;
+            height: 500px;
+        }
+        .command-part-display-count li{
+            display: block;
+            width: 40px;
+            text-align: center;
+        }
+        #command_input{
+            width: 300px;
+            min-height: 500px;
+            max-height: 500px;
+            border: none;
+            background-color: #34495E;
+            color: rgb(0, 255, 0);
+            resize: none;
+            font-size: 16px;
+        }
+        input[type="button"]{
+            width: 50px;
+            height: 25px;
+            background-color: #6289AF;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+        .command-rules{
+            align-self: center;
+        }
+        .clear-border{
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+<section class="wrapper">
+    <section class="table">
+        <table id="table"></table>
+        <div id="robot-box" class="robot-box"></div>
+    </section>
+    <section class="command-part">
+        <section class="command-part-button">
+            <input type="button" id="command_button" value="执行">
+            <input type="button" id="clean_button" value="清空">
+            <input type="button" id="refresh_button" value="刷新">
+        </section>
+        <section class="command-part-display">
+            <ul class="command-part-display-count" id="command_display_count">
+                <li>1</li>
+            </ul>
+            <textarea id="command_input"></textarea>
+        </section>
+    </section>
+    <ul class="command-rules">
+        <li>支持大小写混写,但书写必须规范化</li>
+        <li>PS:n如果为空,则默认为1</li><br />
+        <li><strong>新增</strong>上下左右输入TRA的命令</li><br />
+        <li>GO n:向当前方向前进n格</li>
+        <li>TRA TOP n:向屏幕上侧移动n格</li>
+        <li>TRA LEF n:向屏幕左侧移动n格</li>
+        <li>TRA RIG n:向屏幕右侧移动n格</li>
+        <li>TRA BOT n:向屏幕下面移动n格</li>
+        <li>MOV TOP n:方向转向屏幕上侧,并沿着头朝向往前n格</li>
+        <li>MOV LEF n:方向转向屏幕左侧,并沿着头朝向往前n格</li>
+        <li>MOV RIG n:方向转向屏幕右侧,并沿着头朝向往前n格</li>
+        <li>MOV BOT n:方向转向屏幕下侧,并沿着头朝向往前n格</li>
+    </ul>
+</section>
+<script src="js/task.js"></script>
+</body>
+</html>

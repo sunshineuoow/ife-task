@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 21</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        td{
+            width: 50px;
+            height: 50px;
+            border: 1px solid #eee;
+            box-sizing: border-box;
+            font-weight: bold;
+            font-family: "Microsoft Yahei";
+            text-align: center;
+        }
+        .robot-box{
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            width: 50px;
+            height: 50px;
+            background: url(images/box.jpg) no-repeat 40% 40%;
+            transition: all 1s;
+        }
+        .clear-border{
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <table id="table"></table>
+    <div id="robot-box" class="robot-box"></div>
+    <input type="text" id="command">
+    <input type="button" id="command_button" value="GO">
+    <input type="button" id="command_left" value="TUN LEF">
+    <input type="button" id="command_right" value="TUN RIG">
+    <input type="button" id="command_back" value="TUN BAC">
+    <script src="js/task.js"></script>
+</body>
+</html>
